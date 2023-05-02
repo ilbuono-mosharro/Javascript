@@ -2,27 +2,28 @@
 const wait = milliseconds => {
     return new Promise((resolve, reject) => {
         if (milliseconds > 1500) {
-            reject(`Reject, to much time to run. ${milliseconds} Milliseconds`)
+            reject(`Reject, too much time to run. ${milliseconds} Milliseconds`);
+        } else {
+            setTimeout(() => {
+                resolve("Run after 1 second.");
+            }, milliseconds);
         }
-        setTimeout(() => {
-                resolve("Run after 1 second.")
-        }, milliseconds)
-    })
-}
+    });
+};
 
-let loader = true
+let loader = true;
 
 const page = () => {
-    console.log(loader)
-    const time = wait(2000)
+    console.log(loader);
+    const time = wait(2000);
     time.then(resolve => {
-        console.log(resolve)
+        console.log(resolve);
     }).catch(error => {
-        console.log(error)
+        console.log(error);
     }).finally(() => {
-        loader = false
-        console.log(loader)
-    })
-}
+        loader = false;
+        console.log(loader);
+    });
+};
 
-console.log(page())
+page();
