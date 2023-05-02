@@ -27,6 +27,9 @@ console.log(language[2]);
 console.log(language[language.length - 2]);
 console.log(language.at(2));
 console.log(language.at(-2));
+console.log(language.startsWith("J"))
+console.log(language.endsWith("t"))
+console.log(language.includes("Java"))
 
 // Substrings
 
@@ -44,3 +47,13 @@ let text = `I am learning
 javascript.`
 console.log(text)
 console.log(`I am learning ${language}.`)
+
+let spaceText = " Javascript     "
+console.log(spaceText.trim())
+
+let apps = "Calculator,Phone,Contacts";
+let appsArray = apps.split(",");
+console.log(appsArray);
+let smartPhones = "Nokia,Samsung,Apple"
+console.log(smartPhones.replace(",", "-"))
+console.log(smartPhones.replaceAll(",", "-"))

@@ -25,3 +25,15 @@ let dashboard = "dark";
 if (dashboard !== "light" ) {
     console.log("Your dashboard is on dark mode.")
 }
+
+// Refactoring if conditions
+
+const dashboardcontrol = color => {
+    const options = {
+        light: "Your dashboard is on light mode.",
+        dark: "Your dashboard is on dark mode.",
+    }
+    return options[color] ?? "Unknown color"
+}
+
+console.log(dashboardcontrol("light"))
