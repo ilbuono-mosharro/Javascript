@@ -11,18 +11,14 @@ const wait = milliseconds => {
     });
 };
 
-let loader = true;
-
 const page = () => {
-    console.log(loader);
     const time = wait(2000);
     time.then(resolve => {
         console.log(resolve);
     }).catch(error => {
         console.log(error);
     }).finally(() => {
-        loader = false;
-        console.log(loader);
+        console.log("Done");
     });
 };
 
