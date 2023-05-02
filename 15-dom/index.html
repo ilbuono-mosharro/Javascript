@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+        .blue {
+            color: blue;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="hidden" id="side_menu">
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Team</li>
+        </ul>
+    </nav>
+    <button class="nav_button">Menu</button>
+    <h1 id="h1_id" class="h1_class">Hello <strong>World</strong></h1>
+    <p class="first_p">This is the first paragraph</p>
+    <p class="second_p blue">This is the second paragraph</p>
+    <form id="login_form">
+        <label for="username_id">Username</label>
+        <input type="text" class="username_class" id="username_id" name="username">
+        <label for="pass_id">Password</label>
+        <input type="password" class="pass_class" id="pass_id" name="password">
+        <button class="button_form">Log in</button>
+        <p class="form_data"></p>
+    </form>
+    <script>
+        // textContent will return the text, with all the HTML tags stripped out.
+        // innerHTML will return the HTML string inside of the element (it will not strip out HTML tags).
+        const h1 = document.querySelector("h1")
+        const h1Id = document.querySelector("#h1_id")
+        const h1Class = document.querySelector(".h1_class")
+        console.log(h1.textContent)
+        console.log(h1.innerHTML)
+        console.log(h1Id.textContent)
+        console.log(h1Class.textContent)
+        const allP = document.querySelectorAll("p")
+        const listP = [...allP].map(element => element.textContent)
+        console.log(listP)
+        let firstP = document.querySelector(".first_p")
+        firstP.textContent = "I change the text with textContent and try to add <span>tag</span>"
+        let secondP = document.querySelector(".second_p")
+        secondP.innerHTML = "i change the text with innerHtml and add <span>span etag</span>"
+        const button_form = document.querySelector(".button_form")
+        button_form.addEventListener("click", (e) => {
+            event.preventDefault()
+            const data = document.querySelector(".form_data")
+            const username = document.querySelector(".username_class").value
+            const password = document.querySelector(".pass_class").value
+            data.textContent = `username: ${username} password: ${password}`
+            firstP.classList.add("red")
+            // secondP.classList.remove("blue")
+            secondP.classList.contains("blue") // check if the class contains blue or not
+            secondP.classList.replace("second_p", "third_p");
+        })
+        const menuButton = document.querySelector(".nav_button")
+        const sideMenu = document.querySelector("#side_menu")
+        menuButton.addEventListener("click", () => {
+            sideMenu.classList.toggle("hidden")
+        })
+    </script>
+</body>
+</html>
