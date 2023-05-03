@@ -1,3 +1,12 @@
+/**
+ * Use forEach when iterating over arrays.
+   Use for loop when counting up or down.
+   Use for loop when counting up or down irregularly (skipping some items).
+   for...of can be used to iterate over arrays.
+   Use for...in when iterating over objects.
+ */
+
+
 // Array 
 
 const users = ["Marinario", "Admin", "Tom"]
