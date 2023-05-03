@@ -23,3 +23,10 @@ const page = () => {
 };
 
 page();
+
+const timer = async () => {
+    await wait(1400)
+    console.log("Hello after 1 second and 400 millisecond, when the promise is resolved the await call then() automatically")
+}
+
+timer()

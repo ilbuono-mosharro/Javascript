@@ -15,6 +15,10 @@
         .hidden {
             display: none;
         }
+        .active {
+            background-color: blueviolet;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -27,16 +31,30 @@
     </nav>
     <button class="nav_button">Menu</button>
     <h1 id="h1_id" class="h1_class">Hello <strong>World</strong></h1>
-    <p class="first_p">This is the first paragraph</p>
+    <p class="first_p" id="f_p">This is the first paragraph</p>
     <p class="second_p blue">This is the second paragraph</p>
+    <div class="add_element"></div>
     <form id="login_form">
-        <label for="username_id">Username</label>
+        <label for="username_id" id="username_label">Username</label>
         <input type="text" class="username_class" id="username_id" name="username">
         <label for="pass_id">Password</label>
         <input type="password" class="pass_class" id="pass_id" name="password">
         <button class="button_form">Log in</button>
         <p class="form_data"></p>
     </form>
+    <div class="buttons">
+        <button class="first_button">Insert Html</button>
+        <button class="second_button">Add html element</button>
+    </div>
+    <div class="container">
+        <p>Please select your favorite Web language:</p>
+        <div class="cards">
+            <button class="card">Html</button>
+            <button class="card">Javascript</button>
+            <button class="card">Css</button>
+            <button class="card">Python</button>
+          </div>
+    </div>
     <script>
         // textContent will return the text, with all the HTML tags stripped out.
         // innerHTML will return the HTML string inside of the element (it will not strip out HTML tags).
@@ -65,12 +83,54 @@
             // secondP.classList.remove("blue")
             secondP.classList.contains("blue") // check if the class contains blue or not
             secondP.classList.replace("second_p", "third_p");
+            console.log(firstP.getAttribute("id"))
+            firstP.removeAttribute("id")
+            secondP.setAttribute("id", "s_id")
+            h1.style.color = "red"
+            firstP.remove()
+        })
+        const usernameInput = document.querySelector(".username_class")
+        const passwordInput = document.querySelector(".pass_class")
+        usernameInput.addEventListener("focus", () => {
+            console.log("focus inside (cursor in)")
+        })
+        usernameInput.addEventListener("keyup", () => {
+            const usernameLabel = document.querySelector("#username_label")
+            usernameLabel.textContent = usernameInput.value
+        })
+        passwordInput.addEventListener("blur", () => {
+            console.log("blur (cursor out)")
         })
         const menuButton = document.querySelector(".nav_button")
         const sideMenu = document.querySelector("#side_menu")
         menuButton.addEventListener("click", () => {
             sideMenu.classList.toggle("hidden")
         })
+        const insertButton = document.querySelector(".first_button")
+        const addButton = document.querySelector(".second_button")
+        insertButton.addEventListener("click", () => {
+            const divElement = document.querySelector(".add_element")
+            divElement.insertAdjacentHTML("afterend", "<p>Helloooooooo i am insert in div tag with insertAdjacentHTML</p>")
+        }, {once: true})
+        addButton.addEventListener("click", () => {
+            addButton.textContent = "Loading...."
+            setTimeout(() => {
+            const p = document.createElement("p")
+            p.classList.add("new-added")
+            p.textContent = "i am added now with createElement"
+            document.body.appendChild(p)
+            addButton.textContent = "Create another"
+            }, 1000)
+        })
+        const cards = document.querySelectorAll(".cards .card")
+        cards.forEach(card => {
+            card.addEventListener("click", event => {
+                event.currentTarget.classList.toggle("active")
+            }
+        )})
+        window.addEventListener("scroll", event => {
+    console.log("User scrolled");
+});
     </script>
 </body>
 </html>
